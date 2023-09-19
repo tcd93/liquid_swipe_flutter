@@ -60,6 +60,9 @@ class LiquidProvider extends ChangeNotifier {
   ///see [OnPageChangeCallback]
   OnPageChangeCallback? _onPageChangeCallback;
 
+  ///see [UpdateDynamicSize]
+  UpdateDynamicSize? _updateDynamicSize;
+
   ///see [SlidePercentCallback]
   SlidePercentCallback? _slidePercentCallback;
 
@@ -92,6 +95,7 @@ class LiquidProvider extends ChangeNotifier {
     required TickerProviderStateMixin vsync,
     required double slideIcon,
     required OnPageChangeCallback? onPageChangeCallback,
+    required UpdateDynamicSize? updateDynamicSize,
     required CurrentUpdateTypeCallback? currentUpdateTypeCallback,
     required SlidePercentCallback? slidePercentCallback,
     required bool disableGesture,
@@ -108,6 +112,7 @@ class LiquidProvider extends ChangeNotifier {
     _currentUpdateTypeCallback = currentUpdateTypeCallback;
     _slidePercentCallback = slidePercentCallback;
     _onPageChangeCallback = onPageChangeCallback;
+    _updateDynamicSize = updateDynamicSize;
     shouldDisableUserGesture = disableGesture;
     this.enableSideReveal = enableSideReveal;
 
@@ -239,6 +244,9 @@ class LiquidProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _markForAddSize = false;
+  bool _addingPage = false;
+
   ///updating data using [SlideUpdate], generally we are handling and managing the Animation [UpdateType]
   ///in this methods,
   ///All callbacks and factors are also managed by this method.
@@ -248,6 +256,33 @@ class LiquidProvider extends ChangeNotifier {
       return;
     } else if (event.direction == SlideDirection.rightToLeft &&
         activePageIndex == pagesLength - 1) {
+
+          if (this._updateDynamicSize != null && event.updateType == UpdateType.dragging
+            && !_addingPage) {
+            _markForAddSize = event.slidePercentHor >= 0.4;
+          }
+
+      return;
+    }
+    if (!enableLoop && _updateDynamicSize != null &&
+        _markForAddSize && event.updateType == UpdateType.doneDragging) {
+
+      _addingPage = true;
+      notifyListeners();
+
+      this._updateDynamicSize!(nextPageIndex + 1)
+        .then((result) {
+          if (result) {
+            // activePageIndex++;
+            nextPageIndex++;
+            pagesLength++;
+            _addingPage = false;
+            notifyListeners();
+          }
+        }
+      );
+
+      _markForAddSize = false;
       return;
     }
 

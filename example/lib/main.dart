@@ -129,12 +129,13 @@ class _WithBuilder extends State<WithBuilder> {
               positionSlideIcon: 0.8,
               slideIconWidget: Icon(Icons.arrow_back_ios),
               onPageChangeCallback: pageChangeCallback,
+              updateDynamicSize: updateDynamicSize,
               waveType: WaveType.liquidReveal,
               liquidController: liquidController,
               fullTransitionValue: 880,
               enableSideReveal: true,
               preferDragFromRevealedArea: true,
-              enableLoop: true,
+              enableLoop: false,
               ignoreUserGestureWhileAnimating: true,
             ),
             Padding(
@@ -190,9 +191,23 @@ class _WithBuilder extends State<WithBuilder> {
   }
 
   pageChangeCallback(int lpage) {
+    print('page change callback');
     setState(() {
       page = lpage;
     });
+  }
+
+  Future<bool> updateDynamicSize(int entry) async {
+    data.insert(
+        entry,
+        ItemData(
+          Colors.primaries[Random().nextInt(Colors.primaries.length)],
+          "assets/1.png",
+          "Example",
+          "of Dynamically adding",
+          'Page',
+        ));
+    return true;
   }
 }
 
@@ -455,12 +470,13 @@ class _WithPages extends State<WithPages> {
               fullTransitionValue: 880,
               slideIconWidget: Icon(Icons.arrow_back_ios),
               onPageChangeCallback: pageChangeCallback,
+              updateDynamicSize: updateDynamicSize,
               waveType: WaveType.liquidReveal,
               liquidController: liquidController,
               preferDragFromRevealedArea: true,
               enableSideReveal: true,
               ignoreUserGestureWhileAnimating: true,
-              enableLoop: true,
+              enableLoop: false,
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -519,6 +535,45 @@ class _WithPages extends State<WithPages> {
     setState(() {
       page = lpage;
     });
+  }
+
+  Future<bool> updateDynamicSize(int entry) async {
+    // await Future.delayed(const Duration(seconds: 3));
+
+    pages.insert(
+        entry,
+        Container(
+          color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Image.asset(
+                'assets/1.png',
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: EdgeInsets.all(24.0),
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    "Dynamically added",
+                    style: WithPages.style,
+                  ),
+                  Text(
+                    "Page $entry",
+                    style: WithPages.style,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+    );
+
+    return true;
   }
 }
 

@@ -37,6 +37,15 @@ final key = new GlobalKey<_LiquidSwipe>();
 /// see also : [LiquidController.currentPage]
 typedef OnPageChangeCallback = void Function(int activePageIndex);
 
+/// Dynamically add page count when this is defined, only work
+/// when [enableLoop] is false
+/// 
+/// On first or last page, when user drag above certain threshold (0.4), then
+/// increase size after release. You must implement this method to add data
+/// accordingly, otherwise get index out of bound error - return True indicate
+/// successful update
+typedef UpdateDynamicSize = Future<bool> Function(int activePageIndex);
+
 /// Callback to provide the current UpdateType
 ///
 /// Returns an [UpdateType] value.
@@ -168,6 +177,9 @@ class LiquidSwipe extends StatefulWidget {
   ///see [OnPageChangeCallback]
   final OnPageChangeCallback? onPageChangeCallback;
 
+  ///see [UpdateDynamicSize]
+  final UpdateDynamicSize? updateDynamicSize;
+
   ///see [CurrentUpdateTypeCallback]
   final CurrentUpdateTypeCallback? currentUpdateTypeCallback;
 
@@ -265,6 +277,7 @@ class LiquidSwipe extends StatefulWidget {
     this.liquidController,
     this.waveType = WaveType.liquidReveal,
     this.onPageChangeCallback,
+    this.updateDynamicSize,
     this.currentUpdateTypeCallback,
     this.slidePercentCallback,
     this.preferDragFromRevealedArea = false,
@@ -331,6 +344,7 @@ class LiquidSwipe extends StatefulWidget {
     this.liquidController,
     this.waveType = WaveType.liquidReveal,
     this.onPageChangeCallback,
+    this.updateDynamicSize,
     this.currentUpdateTypeCallback,
     this.slidePercentCallback,
     this.preferDragFromRevealedArea = false,
@@ -370,6 +384,7 @@ class _LiquidSwipe extends State<LiquidSwipe> with TickerProviderStateMixin {
           currentUpdateTypeCallback: widget.currentUpdateTypeCallback,
           slidePercentCallback: widget.slidePercentCallback,
           onPageChangeCallback: widget.onPageChangeCallback,
+          updateDynamicSize: widget.updateDynamicSize,
           disableGesture: widget.disableUserGesture,
           enableSideReveal: widget.enableSideReveal,
         );
