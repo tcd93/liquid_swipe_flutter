@@ -6,8 +6,8 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 void main() {
   /// Comment or uncomment to run both examples
   runApp(
-      WithBuilder()
-      // WithPages()
+      // WithBuilder()
+      WithPages()
   );
 }
 
@@ -235,28 +235,33 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Hi",
-                style: WithPages.style,
-              ),
-              Text(
-                "It's Me",
-                style: WithPages.style,
-              ),
-              Text(
-                "Sahdeep",
-                style: WithPages.style,
-              ),
-            ],
+          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Hi",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "It's Me",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Sahdeep",
+                  style: WithPages.style,
+                ),
+              ],
+            )
           ),
         ],
       ),
@@ -268,28 +273,33 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Take a",
-                style: WithPages.style,
-              ),
-              Text(
-                "look at",
-                style: WithPages.style,
-              ),
-              Text(
-                "Liquid Swipe",
-                style: WithPages.style,
-              ),
-            ],
+          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Take a",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "look at",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Liquid Swipe",
+                  style: WithPages.style,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -301,28 +311,33 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Liked?",
-                style: WithPages.style,
-              ),
-              Text(
-                "Fork!",
-                style: WithPages.style,
-              ),
-              Text(
-                "Give Star!",
-                style: WithPages.style,
-              ),
-            ],
+          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Liked?",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Fork!",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Give Star!",
+                  style: WithPages.style,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -334,28 +349,33 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Can be",
-                style: WithPages.style,
-              ),
-              Text(
-                "Used for",
-                style: WithPages.style,
-              ),
-              Text(
-                "Onboarding Design",
-                style: WithPages.style,
-              ),
-            ],
+          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Can be",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Used for",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Onboarding Design",
+                  style: WithPages.style,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -367,29 +387,36 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 70.0),
             child: ExampleSlider(),
           ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Example",
-                style: WithPages.style,
-              ),
-              Text(
-                "of a page",
-                style: WithPages.style,
-              ),
-              Text(
-                "with Gesture",
-                style: WithPages.style,
-              ),
-            ],
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Example",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "of a page",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "with Gesture",
+                  style: WithPages.style,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -401,28 +428,33 @@ class _WithPages extends State<WithPages> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
-            'assets/1.png',
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 7,
+            child: Image.asset(
+              'assets/1.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          Padding(
-            padding: EdgeInsets.all(24.0),
-          ),
-          Column(
-            children: <Widget>[
-              Text(
-                "Do",
-                style: WithPages.style,
-              ),
-              Text(
-                "Try it",
-                style: WithPages.style,
-              ),
-              Text(
-                "Thank You",
-                style: WithPages.style,
-              ),
-            ],
+          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Do",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Try it",
+                  style: WithPages.style,
+                ),
+                Text(
+                  "Thank You",
+                  style: WithPages.style,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -549,24 +581,29 @@ class _WithPages extends State<WithPages> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Image.asset(
-                'assets/1.png',
-                fit: BoxFit.cover,
+              Expanded(
+                flex: 7,
+                child: Image.asset(
+                  'assets/1.png',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.all(24.0),
-              ),
-              Column(
-                children: <Widget>[
-                  Text(
-                    "Dynamically added",
-                    style: WithPages.style,
-                  ),
-                  Text(
-                    "Page $entry",
-                    style: WithPages.style,
-                  ),
-                ],
+              Spacer(),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "Dynamically added",
+                      style: WithPages.style,
+                    ),
+                    Text(
+                      "Page $entry",
+                      style: WithPages.style,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
