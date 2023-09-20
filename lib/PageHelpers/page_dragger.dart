@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/Helpers/Helpers.dart';
 import 'package:liquid_swipe/Helpers/SlideUpdate.dart';
+import 'package:liquid_swipe/PageHelpers/TransitiveIcon.dart';
 import 'package:liquid_swipe/Provider/LiquidProvider.dart';
 import 'package:provider/provider.dart';
 import 'page_reveal.dart';
@@ -212,7 +213,7 @@ class _PageDraggerState extends State<PageDragger> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 2.0, vertical: 10.0),
-                            child: widget.slideIconWidget,
+                            child: TransitiveIcon(fromChild: widget.slideIconWidget),
                           ),
                         )
                       : null,

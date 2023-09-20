@@ -48,6 +48,12 @@ class LiquidProvider extends ChangeNotifier {
   ///Number of Page.
   int pagesLength = 0;
 
+  /// When [LiquidSwipe.updateDynamicSize] is defined & drag is above certain threshold on last page
+  bool get markForAddSize => _markForAddSize;
+
+  /// [LiquidSwipe.updateDynamicSize] is running 
+  bool get addingPage => _addingPage;
+
   ///Ticker Provider from [LiquidSwipe], cause need to use it in [AnimatedPageDragger]
   late TickerProviderStateMixin singleTickerProviderStateMixin;
 
